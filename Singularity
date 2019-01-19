@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: nvidia/cuda:9.2-cudnn7-runtime-ubuntu16.04
+From: nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04
 
 %environment
 	export PATH=/bin:/usr/bin:/usr/local/bin:/usr/local/cuda/bin:
