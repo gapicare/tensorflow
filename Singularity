@@ -25,6 +25,8 @@ From: nvidia/cuda:9.0-base-ubuntu16.04
 		pkg-config \
 		python \
 		python-dev \
+		python3 \
+		python3-dev \
 		rsync \
 		software-properties-common \
 		unzip \
@@ -35,13 +37,11 @@ From: nvidia/cuda:9.0-base-ubuntu16.04
 	apt-get update && \
 	apt-get install nvinfer-runtime-trt-repo-ubuntu1604-4.0.1-ga-cuda9.0 && \
 	apt-get update && \
-	apt-get install libnvinfer4=4.1.2-1+cuda9.0
+	apt-get install -y libnvinfer4=4.1.2-1+cuda9.0
 
-	curl -0 https://bootstrap.pypa.io/get-pip.py && \
-	python get-pip.py && \
-	rm get-pip.py
+	apt-get install -y python3-pip
 
-	pip --no-cache-dir install \
+	pip3 --no-cache-dir install \
 		Pillow \
 		h5py \
 		ipykernel \
@@ -52,10 +52,9 @@ From: nvidia/cuda:9.0-base-ubuntu16.04
 		numpy \
 		pandas \
 		scipy \
-		sklearn \
-		&& \
-	python -m ipykernel.kernelspec
+		sklearn
 
-	pip --no-cache-install \
-	http://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.0.0-cp27-none-linux_x86_64.whl
+	pip3 install tensorflow-gpu==1.10.1
+	pip3 install keras==2.1.6
 
+	
